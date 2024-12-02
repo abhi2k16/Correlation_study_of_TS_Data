@@ -11,7 +11,6 @@ parameters = ['N2_RATE','APRS_RAW','IPRS_RAW','WOB_DH','CT_WGT',
               'CIRC_PRS','WH_PRS','BVEL','FLWI','GTF_RT_RAW','VIB_LAT','SHK_LAT','HDTH',
               'TEMP_DNI_RAW', 'ATEMP_RAW', 'PTEMP_RAW', 'DAGR_Temp','DEPT','INCL_RT_RAW',
               'AZIM_RT_RAW'] 
-#data = pd.read_csv("Pandas_dataframe_O_1011724_56-7.csv")
 data = pd.read_csv("*.csv")
 N2data = data[['TIME','N2_RATE']]
 APRS_RAWdata = data[['TIME','APRS_RAW']]
@@ -311,7 +310,7 @@ for i, parameter in enumerate(corr.parameters):
         fig.suptitle(parameter1+' with '+ parameter)
     plt.show()
 #%% Multi axis plot 
-data = pd.read_csv("C:/Users/AKumar340/OneDrive - SLB/2024/CTD_EventDetection/Data/O.1011724.56-7.csv")
+data = pd.read_csv("*.csv")
 parameters_2 = ['AZIM_RT_RAW','INCL_RT_RAW','WH_PRS','DEPT','CT_WGT','BVEL','GTF_RT_RAW']
 fig, ax1 = plt.subplots(figsize = (20,10))
 y = np.arange(0,len(data['SHK_LAT']),1)/60
@@ -522,7 +521,7 @@ for i, parameter in enumerate(parameters):
             top=None, wspace=0.3, hspace=0.3)
     plt.show()
 #%% overall correlation measurment
-data = pd.read_csv("C:/Users/AKumar340/OneDrive - SLB/2024/CTD_EventDetection/Data/O.1011724.56-7.csv")
+data = pd.read_csv("*.csv")
 data1 = data[parameters]
 #%%
 import seaborn as sns
