@@ -19,61 +19,45 @@ APRS_RAWdata = data[['TIME','APRS_RAW']]
 start_time = 0 #In second
 end_time = 140000 #In second
 fig, axs = plt.subplots(4,4, figsize = (14,10))
-
 axs[0,0].plot(data.APRS_RAW[start_time:end_time])
 axs[0,0].set_title('APRS_RAW')
-
 axs[0,1].plot(data.IPRS_RAW[start_time:end_time])
 axs[0,1].set_title('IPRS_RAW')
-
 axs[0,2].plot(data.WOB_DH[start_time:end_time])
 axs[0,2].set_title('WOB_DH')
-
 axs[0,3].plot(data.AZIM_RT_RAW[start_time:end_time])
 axs[0,3].set_title('AZIM_RT_RAW')
-
 axs[1,0].plot(data.CT_WGT[start_time:end_time])
 axs[1,0].set_title('CT_WGT')
-
 axs[1,1].plot(data.CIRC_PRS[start_time:end_time])
 axs[1,1].set_title('CIRC_PRS')
-
 axs[1,2].plot(data.WH_PRS[start_time:end_time])
 axs[1,2].set_title('WH_PRS')
-
 axs[1,3].plot(data.BVEL[start_time:end_time])
 axs[1,3].set_title('BVEL')
-
 axs[2,0].plot(data.FLWI[start_time:end_time])
 axs[2,0].set_title('FLWI')
-
 axs[2,1].plot(data.GTF_RT_RAW[start_time:end_time])
 axs[2,1].set_title('GTF_RT_RAW')
-
 axs[2,2].plot(data.VIB_LAT[start_time:end_time])
 axs[2,2].set_title('VIB_LAT')
-
 axs[2,3].plot(data['SHK_LAT'][start_time:end_time])
 axs[2,3].set_title('SHK_LAT')
-
 axs[3,0].plot(data['TEMP_DNI_RAW'][start_time:end_time])
 axs[3,0].set_title('TEMP_DNI_RAW')
-
 axs[3,1].plot(data['ATEMP_RAW'][start_time:end_time])
 axs[3,1].set_title('ATEMP_RAW')
-
 axs[3,2].plot(data['PTEMP_RAW'][start_time:end_time])
 axs[3,2].set_title('PTEMP_RAW')
-
 axs[3,3].plot(data['DAGR_Temp'][start_time:end_time])
 axs[3,3].set_title('DAGR_Temp')
 axs[3,2].set(xlabel = 'Time (sec)')
 plt.subplots_adjust(left=None, bottom=None, right=None,
         top=None, wspace=0.3, hspace=0.3)
 # # Hide x labels and tick labels for top plots and y ticks for right plots.
-# for ax in axs.flat:
-#      ax.label_outer()
-#plt.savefig('parameter_of_interest.tif')
+for ax in axs.flat:
+      ax.label_outer()
+plt.savefig('parameter_of_interest.tif')
 plt.show()
 #%% Data cleaning: fill NaN with adjecent value
 for parameter in parameters:
@@ -274,15 +258,15 @@ start_time = 300*60
 end_time =600*60
 #corr.corr_param(max_steps=1200, time_steps=[5,10,15,20], fig_size =(12,8), sub_plot_row=2, sub_plot_col=2)
 corr.corr_slid(start_time=start_time, end_time=end_time, time_steps=[2], fig_size =(8,4), sub_plot_row=2, sub_plot_col=1)
-#end_time =36000
-#corr.corr_slid_timeLag(end_time =135000, time_steps=[5,10,15,20], fig_size =(12,8), 
-#                      sub_plot_row=2, sub_plot_col=2,TimeLags=TimeLags)
-#%%corr.corr_plot(n_step =30, time_step=300, fig_size=(12,9))
+end_time =36000
+corr.corr_slid_timeLag(end_time =135000, time_steps=[5,10,15,20], fig_size =(12,8), 
+                      sub_plot_row=2, sub_plot_col=2,TimeLags=TimeLags)
+corr.corr_plot(n_step =30, time_step=300, fig_size=(12,9))
 #%% Time Series Data Plotting of Parameter With N2 RATE 
 corr = correlation(parameters)
 end_time = 2250*60
 start_time = 0
-#plt.figure(figsize = (8,6))
+plt.figure(figsize = (8,6))
 for i, parameter in enumerate(corr.parameters):
     if parameter == 'N2_RATE':
         pass
@@ -297,8 +281,8 @@ for i, parameter in enumerate(corr.parameters):
         ax2.plot(np.arange(0,len(y),1)/60,y,'-',color='darkorange')
         ax1[0].set_ylabel(parameter1)
         ax2.set_ylabel(parameter)
-        #ax1[0].set_xlabel('Time (Minutes)')
-        #ax1[0].set_xlim(0,2400)
+        ax1[0].set_xlabel('Time (Minutes)')
+        ax1[0].set_xlim(0,2400)
         ax1[0].legend([parameter1])
         ax2.legend([parameter])
         ax3 = ax1[1].twinx()
@@ -306,7 +290,7 @@ for i, parameter in enumerate(corr.parameters):
         ax3.plot(np.arange(0,len(y),1)/60,y,'-',color='darkorange')
         ax1[1].set_ylabel(parameter1)
         ax3.set_ylabel(parameter)
-        #ax1[1].set_xlabel('Time (Minutes)')
+        ax1[1].set_xlabel('Time (Minutes)')
         ax1[1].set_xlim(0,400)
         ax4 = ax1[2].twinx()
         ax1[2].plot(np.arange(0,len(y),1)/60, x)
@@ -330,9 +314,7 @@ for i, parameter in enumerate(corr.parameters):
 data = pd.read_csv("C:/Users/AKumar340/OneDrive - SLB/2024/CTD_EventDetection/Data/O.1011724.56-7.csv")
 parameters_2 = ['AZIM_RT_RAW','INCL_RT_RAW','WH_PRS','DEPT','CT_WGT','BVEL','GTF_RT_RAW']
 fig, ax1 = plt.subplots(figsize = (20,10))
-
 y = np.arange(0,len(data['SHK_LAT']),1)/60
-
 ax1.plot(y,data[parameters_2[0]], color = 'blue',alpha=0.9)
 ax1.set_ylabel(parameters_2[0])
 ax1.set_xlabel('Time(Minutes)')
@@ -379,7 +361,6 @@ ax5.spines['right'].set_color('deeppink')
 ax6.spines['right'].set_color('brown')
 ax7.spines['right'].set_color('purple')
 ax8.spines['right'].set_color('black')
-
 plt.show()
 #%% Noise Quantification
 from scipy import signal
@@ -430,7 +411,6 @@ def QuartileCOD(x): #Quartile Coefficient of Dispersion
     x.sort()
     q1, q3 = np.percentile(x,[23,75])
     return (q3 - q1)/(q1+q3)
-    
 def Coeff_ofvariance(x):
     mean_x = np.mean(x)
     var_x = np.std(x)
