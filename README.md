@@ -1,7 +1,7 @@
 </header>
 The script is a Python program designed for analyzing time-series data, particularly focusing on correlations between various parameters and N2_RATE. It includes the following key functionalities:
 
-# Data Import and Cleaning:
+## Data Import and Cleaning:
 
   Reads a CSV file containing time-series data.
   Cleans the data by filling NaN values and removing unwanted data (e.g., negative values in specific columns like PTEMP_RAW and IPRS_RAW).
@@ -17,7 +17,7 @@ Correlation Analysis:
   corr_param: Calculates Kendall Tau correlations for different time steps.
   corr_slid: Calculates and visualizes sliding window correlations using Spearman correlation.
   corr_slid_timeLag: Analyzes correlations with time lags.
-Noise Quantification:
+### Noise Quantification:
 
   Implements methods to quantify noise in data using techniques like filtering, correlation coefficients, Jensen-Shannon       divergence, and coefficient of variation.
 Outlier Analysis:
