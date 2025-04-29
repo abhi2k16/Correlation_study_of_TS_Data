@@ -1,6 +1,7 @@
+</header>
 The script is a Python program designed for analyzing time-series data, particularly focusing on correlations between various parameters and N2_RATE. It includes the following key functionalities:
 
-Data Import and Cleaning:
+# Data Import and Cleaning:
 
   Reads a CSV file containing time-series data.
   Cleans the data by filling NaN values and removing unwanted data (e.g., negative values in specific columns like PTEMP_RAW and IPRS_RAW).
